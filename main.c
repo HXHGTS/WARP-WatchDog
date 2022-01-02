@@ -6,7 +6,6 @@ char status[5];
 
 int main() {
 	system("curl https://raw.githubusercontent.com/HXHGTS/WARP-WatchDog/main/autocheck.sh > autocheck.sh");
-
 	UnlockTest:if (TestOutBound() == 1) {
 		ChangeIP();
 		goto UnlockTest;
