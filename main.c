@@ -24,7 +24,6 @@ int ChangeIP() {
 
 int TestOutBound() {
 	system("echo 1 | bash autocheck.sh -M 4");
-	system("sleep 5");
 	log = fopen("unlock.log", "r");
 	fread(status,1,1,log);
 	fclose(log);
