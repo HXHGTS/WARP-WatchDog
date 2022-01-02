@@ -7,5 +7,5 @@ wget https://github.com/HXHGTS/WARP-WatchDog/releases/download/Warp-WatchDog/wat
 ```
 后台守护进程:
 ```
-echo "*/300 * * * * ./watchdog >> /dev/null" > /var/spool/cron/root
+echo "*/300 * * * * ./watchdog > /dev/null" > /var/spool/cron/root
 ```
