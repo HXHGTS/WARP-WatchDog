@@ -313,12 +313,8 @@ function ScriptTitle(){
 	if [[ "$language" == "e" ]];then
 		echo -e "【Netflix Test】";
 		echo ""
-		echo -e " ** Test Starts At: $(date)";
-		echo ""
 	else
 		echo -e "【奈飞测试】";
-		echo ""
-		echo -e " ** 测试时间: $(date)";
 		echo ""
 	fi
 }
