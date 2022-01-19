@@ -12,4 +12,6 @@ wget https://raw.githubusercontent.com/HXHGTS/WARP-WatchDog/main/main.c -O watch
 后台守护进程:
 ```
 echo "*/5 * * * * ./watchdog > /dev/null" > /var/spool/cron/root
+
+echo "*/5 * * * * ./watchdog > /dev/null" > /var/spool/cron/crontabs/root
 ```
