@@ -32,7 +32,7 @@ int TestOutBound() {
 	fread(status,1,1,log);
 	fclose(log);
 	if (status[0] == '1') {
-		printf("Tested Successful!\n\n");
+		printf("Tested Successful!(%d tries)\n\n",Change_Num);
 		return 0;
 	}
 	else {
