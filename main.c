@@ -7,6 +7,7 @@ int Change_Num;
 
 int main() {
 	Change_Num=0;
+	system("clear");
 	system("curl https://raw.githubusercontent.com/HXHGTS/WARP-WatchDog/main/autocheck.sh > ./autocheck.sh");
 	UnlockTest:if (TestOutBound() == 1) {
 		Change_Num=Change_Num+1;
