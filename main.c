@@ -27,16 +27,16 @@ int ChangeIP() {
 
 int TestOutBound() {
 	printf("Testing Outbound ip . . .\n");
-	system("echo 1 | bash autocheck.sh -M 4");
+	system("echo 1 | bash autocheck.sh -M 4 > /dev/null");
 	log = fopen("./unlock.log", "r");
 	fread(status,1,1,log);
 	fclose(log);
 	if (status[0] == '1') {
-		printf("Tested Successful!\n");
+		printf("Tested Successful!\n\n");
 		return 0;
 	}
 	else {
-		printf("Tested Failed!\n");
+		printf("Tested Failed!\n\n");
 		return 1;
 	}
 }
