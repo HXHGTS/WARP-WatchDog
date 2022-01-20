@@ -8,6 +8,12 @@ wget https://github.com/HXHGTS/WARP-WatchDog/releases/latest/download/watchdog -
 
 安装使用(编译安装):
 ```
+yum install -y gcc
+```
+```
+apt install -y build-essential
+```
+```
 wget https://raw.githubusercontent.com/HXHGTS/WARP-WatchDog/main/main.c -O watchdog.c && chmod +x watchdog.c && gcc -o watchdog watchdog.c && ./watchdog
 ```
 
