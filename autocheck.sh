@@ -177,15 +177,14 @@ ShowRegion(){
 }	
 
 function MediaUnlockTest_Netflix() {
-    echo -n -e " Netflix:\t\t\t\t->\c";
     local result1=$(curl $useNIC -${1} --interface 172.16.0.2 --user-agent "${UA_Browser}" -fsL --write-out %{http_code} --output /dev/null --max-time 10 "https://www.netflix.com/title/81215567" 2>&1)
 	
     if [[ "$result1" == "404" ]];then
-        echo 0 > /root/unlock.log
+        echo 0 > ./unlock.log
         return;
 		
 	elif  [[ "$result1" == "403" ]];then
-        echo 0 > /root/unlock.log
+        echo 0 > ./unlock.log
         return;
 		
 	elif [[ "$result1" == "200" ]];then
@@ -193,10 +192,10 @@ function MediaUnlockTest_Netflix() {
 		if [[ ! -n "$region" ]];then
 			region="US";
 		fi
-		echo 1 > /root/unlock.log
+		echo 1 > ./unlock.log
 		return;
 	elif  [[ "$result1" == "000" ]];then
-		echo 0 > /root/unlock.log
+		echo 0 > ./unlock.log
         return;
     fi   
 }
@@ -209,18 +208,12 @@ function CheckV4() {
 	if [[ "$language" == "e" ]];then
 		if [[ "$NetworkType" == "6" ]];then
 			isv4=0
-			echo -e "${Font_SkyBlue}User Choose to Test Only IPv6 Results, Skipping IPv4 Testing...${Font_Suffix}"
 			
 		else
-			echo -e " ${Font_SkyBlue}** Checking Results Under IPv4${Font_Suffix} "
-			echo "--------------------------------"
-			echo -e " ${Font_SkyBlue}** Your IPV4 Address: ${local_ipv4}${Font_Suffix} "
-			echo -e " ${Font_SkyBlue}** Your Network Provider: ${local_isp4}${Font_Suffix} "
 			check4=`ping 1.1.1.1 -c 1 2>&1`;
 			if [[ "$check4" != *"unreachable"* ]] && [[ "$check4" != *"Unreachable"* ]];then
 				isv4=1
 			else
-				echo -e "${Font_SkyBlue}No IPv4 Connectivity Found, Abort IPv4 Testing...${Font_Suffix}"
 				isv4=0
 			fi
 
@@ -228,19 +221,12 @@ function CheckV4() {
 		fi	
 	else
 		if [[ "$NetworkType" == "6" ]];then
-			isv4=0
-			echo -e "${Font_SkyBlue}用户选择只检测IPv6结果，跳过IPv4检测...${Font_Suffix}"
-			
+			isv4=0			
 		else
-			echo -e " ${Font_SkyBlue}** 正在测试IPv4解锁情况${Font_Suffix} "
-			echo "--------------------------------"
-			echo -e " ${Font_SkyBlue}** 您的ipv4地址为: ${local_ipv4}${Font_Suffix} "
-			echo -e " ${Font_SkyBlue}** 您的网络为: ${local_isp4}${Font_Suffix} "
 			check4=`ping 1.1.1.1 -c 1 2>&1`;
 			if [[ "$check4" != *"unreachable"* ]] && [[ "$check4" != *"Unreachable"* ]];then
 				isv4=1
 			else
-				echo -e "${Font_SkyBlue}当前主机不支持IPv4,跳过...${Font_Suffix}"
 				isv4=0
 			fi
 
@@ -253,20 +239,12 @@ function CheckV6() {
 	if [[ "$language" == "e" ]];then
 		if [[ "$NetworkType" == "4" ]];then
 			isv6=0
-			echo -e "${Font_SkyBlue}User Choose to Test Only IPv4 Results, Skipping IPv6 Testing...${Font_Suffix}"
 		else	
 			check6_1=$(curl $useNIC -fsL --write-out %{http_code} --output /dev/null --max-time 10 ipv6.google.com)
 			check6_2=$(curl $useNIC -fsL --write-out %{http_code} --output /dev/null --max-time 10 ipv6.ip.sb)
 			if [[ "$check6_1" -ne "000" ]] || [[ "$check6_2" -ne "000" ]];then
-				echo ""
-				echo ""
-				echo -e " ${Font_SkyBlue}** Checking Results Under IPv6${Font_Suffix} "
-				echo "--------------------------------"
-				echo -e " ${Font_SkyBlue}** Your IPV6 Address: ${local_ipv6}${Font_Suffix} "
-				echo -e " ${Font_SkyBlue}** Your Network Provider: ${local_isp6}${Font_Suffix} "
 				isv6=1
 			else
-				echo -e "${Font_SkyBlue}No IPv6 Connectivity Found, Abort IPv6 Testing...${Font_Suffix}"
 				isv6=0
 			fi
 			echo -e "";
@@ -276,20 +254,12 @@ function CheckV6() {
 	
 		if [[ "$NetworkType" == "4" ]];then
 			isv6=0
-			echo -e "${Font_SkyBlue}用户选择只检测IPv4结果，跳过IPv6检测...${Font_Suffix}"
 		else	
 			check6_1=$(curl $useNIC -fsL --write-out %{http_code} --output /dev/null --max-time 10 ipv6.google.com)
 			check6_2=$(curl $useNIC -fsL --write-out %{http_code} --output /dev/null --max-time 10 ipv6.ip.sb)
 			if [[ "$check6_1" -ne "000" ]] || [[ "$check6_2" -ne "000" ]];then
-				echo ""
-				echo ""
-				echo -e " ${Font_SkyBlue}** 正在测试IPv6解锁情况${Font_Suffix} "
-				echo "--------------------------------"
-			                echo -e " ${Font_SkyBlue}** 您的ipv4地址为: ${local_ipv6}${Font_Suffix} "
-				echo -e " ${Font_SkyBlue}** 您的网络为: ${local_isp6}${Font_Suffix} "
 				isv6=1
 			else
-				echo -e "${Font_SkyBlue}当前主机不支持IPv6,跳过...${Font_Suffix}"
 				isv6=0
 			fi
 			echo -e "";
@@ -299,10 +269,8 @@ function CheckV6() {
 
 function Goodbye(){
 	if [[ "$language" == "e" ]];then
-		echo -e "Test finished!";
 		echo ""
 	else
-		echo -e "测试完成!";
 		echo ""
 	fi
 }
@@ -311,10 +279,8 @@ clear;
 
 function ScriptTitle(){
 	if [[ "$language" == "e" ]];then
-		echo -e "【Netflix Test】";
 		echo ""
 	else
-		echo -e "【奈飞测试】";
 		echo ""
 	fi
 }
@@ -322,12 +288,8 @@ ScriptTitle
 
 function Start(){
 	if [[ "$language" == "e" ]];then
-		echo -e "${Font_Blue}Please Select Test Region or Press ENTER to Test All Regions${Font_Suffix}"
-		echo -e "${Font_SkyBlue}Input Number【1】：【 Netflix 】${Font_Suffix}"
 		read -p "Please Input the Correct Number or Press ENTER:" num
 	else
-		echo -e "${Font_Blue}请选择检测项目，直接按回车将进行全区域检测${Font_Suffix}"
-		echo -e "${Font_SkyBlue}输入数字【1】：【 奈飞平台 】检测${Font_Suffix}"
 		read -p "请输入正确数字或直接按回车:" num
 	fi	
 }
