@@ -18,9 +18,11 @@ apt install -y build-essential && wget https://raw.githubusercontent.com/HXHGTS/
 后台守护进程(Centos7/8):
 ```
 echo "*/5 * * * * ./watchdog > /dev/null" > /var/spool/cron/root
+crontab -l
 ```
 
 后台守护进程(Debian9/10/11):
 ```
 echo "*/5 * * * * ./watchdog > /dev/null" > /var/spool/cron/crontabs/root
+crontab -l
 ```
