@@ -6,7 +6,7 @@ Warp出口ip监控工具
 wget https://github.com/HXHGTS/WARP-WatchDog/releases/latest/download/watchdog -O watchdog && chmod +x watchdog && ./watchdog
 ```
 
-### Centos7/8
+### Centos 7/8
 
 安装使用(编译安装)(Centos7/8):
 ```
@@ -19,7 +19,7 @@ echo "*/15 * * * * ./watchdog > /dev/null" > /var/spool/cron/root
 crontab -l
 ```
 
-### Debian9/10/11
+### Debian 9/10/11
 
 安装使用(编译安装)(Debian9/10/11):
 ```
