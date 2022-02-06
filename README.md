@@ -1,10 +1,7 @@
 # WARP-WatchDog
 Warp出口ip监控工具
 
-安装使用(下载安装):
-```
-wget https://github.com/HXHGTS/WARP-WatchDog/releases/latest/download/watchdog -O watchdog && chmod +x watchdog && ./watchdog
-```
+## 编译安装
 
 ### Centos 7/8
 
@@ -30,4 +27,11 @@ apt install -y build-essential && wget https://raw.githubusercontent.com/HXHGTS/
 ```
 echo "*/15 * * * * ./watchdog > /dev/null" > /var/spool/cron/crontabs/root
 crontab -l
+```
+
+## 下载安装
+
+安装使用(下载安装):
+```
+wget https://github.com/HXHGTS/WARP-WatchDog/releases/latest/download/watchdog -O watchdog && chmod +x watchdog && ./watchdog
 ```
