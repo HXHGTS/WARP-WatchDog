@@ -35,3 +35,5 @@ crontab -l
 ```
 wget https://github.com/HXHGTS/WARP-WatchDog/releases/latest/download/watchdog -O watchdog && chmod +x watchdog && ./watchdog
 ```
+
+后台守护进程根据对应系统选择上面的方案
