@@ -12,7 +12,7 @@ yum install -y gcc && wget https://raw.githubusercontent.com/HXHGTS/WARP-WatchDo
 
 后台守护进程(Centos7/8):
 ```
-echo "*/15 * * * * ./watchdog > /dev/null" > /var/spool/cron/root
+echo "*/15 * * * * /root/watchdog > /dev/null" > /var/spool/cron/root
 crontab -l
 ```
 
@@ -25,7 +25,7 @@ apt install -y build-essential && wget https://raw.githubusercontent.com/HXHGTS/
 
 后台守护进程(Debian9/10/11):
 ```
-echo "*/15 * * * * ./watchdog > /dev/null" > /var/spool/cron/crontabs/root
+echo "*/15 * * * * /root/watchdog > /dev/null" > /var/spool/cron/crontabs/root
 crontab -l
 ```
 
