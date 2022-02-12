@@ -166,7 +166,7 @@ check_dependencies(){
 }		
 check_dependencies
 
-local_ipv4=$(curl $useNIC --interface 172.16.0.2 -4 -s --max-time 10 api64.ipify.org)
+local_ipv4=$(curl $useNIC --interface 172.16.0.2 -4 -s --max-time 10 ifconfig.me)
 local_ipv6=$(curl $useNIC -6 -s --max-time 20 api64.ipify.org)
 local_isp4=$(curl $useNIC --interface 172.16.0.2 -4 -s --max-time 10 https://api.ip.sb/geoip/${local_ipv4} | cut -f1 -d"," | cut -f4 -d '"')
 local_isp6=$(curl $useNIC -6 -s --max-time 10 https://api.ip.sb/geoip/${local_ipv6} | cut -f1 -d"," | cut -f4 -d '"')
