@@ -1,5 +1,5 @@
 #!/bin/sh
 
-/root/watchdog > /dev/null
+/root/watchdog
 
 exit 0
