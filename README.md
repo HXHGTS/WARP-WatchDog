@@ -14,7 +14,7 @@ yum install -y gcc && wget https://raw.githubusercontent.com/HXHGTS/WARP-WatchDo
 ```
 curl https://raw.githubusercontent.com/HXHGTS/WARP-WatchDog/main/start_watchdog.sh > /root/start_watchdog.sh
 chmod +x /root/start_watchdog.sh
-echo "*/5 * * * * bash /root/start_watchdog.sh > /dev/null" > /var/spool/cron/root
+echo "*/5 * * * * bash /root/start_watchdog.sh > /dev/null 2>&1" > /var/spool/cron/root
 crontab -l
 ```
 
@@ -29,7 +29,7 @@ apt install -y build-essential && wget https://raw.githubusercontent.com/HXHGTS/
 ```
 curl https://raw.githubusercontent.com/HXHGTS/WARP-WatchDog/main/start_watchdog.sh > /root/start_watchdog.sh
 chmod +x /root/start_watchdog.sh
-echo "*/5 * * * * bash /root/start_watchdog.sh > /dev/null" > /var/spool/cron/crontabs/root
+echo "*/5 * * * * bash /root/start_watchdog.sh > /dev/null 2>&1" > /var/spool/cron/crontabs/root
 crontab -l
 ```
 
